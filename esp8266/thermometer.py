@@ -7,6 +7,6 @@ def getHT():
     t = d.temperature();
     h = d.humidity();
     return {
-        't': t,
-        'h': h
+        'temp': str(t),
+        'humi': str(h)
     };

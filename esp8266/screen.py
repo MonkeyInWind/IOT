@@ -7,3 +7,6 @@ oled = SSD1306_I2C(128, 64, i2c);
 def display(text, x, y):
     oled.text(text, x, y);
     oled.show();
+
+def displayClear():
+    oled.fill(0);
