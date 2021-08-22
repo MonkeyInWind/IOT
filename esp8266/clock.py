@@ -7,7 +7,7 @@ def getCurrentTime():
     res=urequests.get(url).text;
     dateJson=json.loads(res);
     t = dateJson['sysTime2'].split();
-    currentDate = t[0];
+    currentDate = t[0].replace('-', '/');
     currentTime = t[1];
     return {
         'date': currentDate,
