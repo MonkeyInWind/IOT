@@ -6,7 +6,7 @@ def toDoubleStr(n):
 
 def initMachineTime():
     ntptime.NTP_DELTA = 3155644800   # UTC+8偏移时间（秒），不设置就是UTC0
-    ntptime.host = "ntp1.aliyun.com"  # ntp服务器，默认是"pool.ntp.org"
+    ntptime.host = "ntp.ntsc.ac.cn"  # ntp服务器，默认是"pool.ntp.org"
     ntptime.settime();               # 修改设备时间
 
 def getCurrentTime():
