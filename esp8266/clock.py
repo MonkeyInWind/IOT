@@ -21,5 +21,6 @@ def getCurrentTime():
     s = toDoubleStr(timeList[6]);
     return {
         "date": Y + "/" + M + "/" + D,
-        "time": h + ":" + m + ":" +s
+        "time": h + ":" + m + ":" +s,
+        "h": h
     }

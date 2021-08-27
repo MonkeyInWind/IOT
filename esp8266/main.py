@@ -14,7 +14,7 @@ currentTime = {
     "time": "-:-:-"
 }
 
-today = "";
+currentHour = "";
 
 htTimer = Timer(0);
 clockTimer = Timer(1);
@@ -24,17 +24,17 @@ def refreshHT(t):
     HT = getHT();
 
 def initTime():
-    global currentTime, today;
+    global currentTime, currentHour;
     initMachineTime();
     currentTime = getCurrentTime();
     print("initTime: ", currentTime);
-    today = currentTime["date"];
+    currentHour = currentTime["h"];
 
 def updateTime(t):
     global currentTime;
     currentTime = getCurrentTime();
-    d = currentTime["date"];
-    if d != today:
+    h = currentTime["h"];
+    if h != currentHour:
         initTime();
     refreshDisplay();
 
