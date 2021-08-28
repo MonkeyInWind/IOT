@@ -1,8 +1,7 @@
 from machine import Timer;
 from thermometer import getHT;
 from clock import initMachineTime, getCurrentTime;
-from screen import addText, displayClear, show;
-import uasyncio;
+from screen import refreshDisplay;
 import time;
 
 HT = {
@@ -37,19 +36,15 @@ def updateTime(t):
     h = currentTime["h"];
     if h != currentHour:
         initTime();
-    refreshDisplay();
-
-def refreshDisplay():
-    displayClear();
-    addText(currentTime["date"], 2, 2);
-    addText(currentTime["time"], 2, 17);
-    addText("Temp:" + HT["temp"], 2, 32);
-    addText("Humi:" + HT["humi"], 2, 47);
-    show();
+    refreshDisplay([
+        [currentTime["date"], 2, 2],
+        [currentTime["time"], 2, 17],
+        ["Temp:" + HT["temp"], 2, 32],
+        ["Humi:" + HT["humi"], 2, 47]
+    ]);
 
 def main():
-    addText("waiting...", 5, 5);
-    show();
+    refreshDisplay([["waiting...", 5, 5]]);
     time.sleep(2);
     refreshHT(0);
     htTimer.init(period = 1000 * 60 * 10, mode = Timer.PERIODIC, callback = refreshHT);
