@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Query, Body, Cookie, Header, status;
+from fastapi import FastAPI;
 from fastapi.middleware.cors import CORSMiddleware;
-from  routes import moduleRouter;
+from routes import moduleRouter;
 
 app = FastAPI();
 
