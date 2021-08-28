@@ -12,5 +12,5 @@ def getHT():
         "temp": t,
         "humi": h
     };
-    urequests.post("http://192.168.31.113:6080/api/HT/update", headers = {'content-type': 'application/json'}, data = ujson.dumps(data));
+    urequests.post("http://192.168.31.222:6080/api/HT/update", headers = {'content-type': 'application/json'}, data = ujson.dumps(data));
     return data;

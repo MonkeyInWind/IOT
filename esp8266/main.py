@@ -3,6 +3,7 @@ from thermometer import getHT;
 from clock import initMachineTime, getCurrentTime;
 from screen import addText, displayClear, show;
 import uasyncio;
+import time;
 
 HT = {
     "temp": "0",
@@ -49,8 +50,9 @@ def refreshDisplay():
 def main():
     addText("waiting...", 5, 5);
     show();
+    time.sleep(1);
     refreshHT(0);
-    htTimer.init(period = 1000 * 60 * 5, mode = Timer.PERIODIC, callback = refreshHT);
+    htTimer.init(period = 1000 * 60 * 10, mode = Timer.PERIODIC, callback = refreshHT);
     clockTimer.init(period = 1000, mode = Timer.PERIODIC, callback = updateTime);
 
 if __name__ == "__main__":
