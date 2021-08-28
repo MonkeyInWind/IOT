@@ -50,7 +50,7 @@ def refreshDisplay():
 def main():
     addText("waiting...", 5, 5);
     show();
-    time.sleep(1);
+    time.sleep(2);
     refreshHT(0);
     htTimer.init(period = 1000 * 60 * 10, mode = Timer.PERIODIC, callback = refreshHT);
     clockTimer.init(period = 1000, mode = Timer.PERIODIC, callback = updateTime);
