@@ -6,7 +6,7 @@ import time;
 
 HT = {
     "temp": "0",
-    "humi": ""
+    "humi": "0"
 }
 
 currentTime = {

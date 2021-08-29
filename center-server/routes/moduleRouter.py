@@ -1,7 +1,10 @@
 from fastapi import APIRouter;
 from pydantic import BaseModel;
+import json;
+from db import database;
 
 router = APIRouter();
+insertHT = database.insertHT;
 
 class HT(BaseModel):
     temp: str
@@ -13,7 +16,13 @@ class HTData(BaseModel):
 
 @router.post("/HT/update")
 async def updateHT(data: HTData):
-    print(data)
+    macAddress = data.macAddress;
+    ht = data.data;
+    insertHT({
+        "macAddress": macAddress,
+        "temp": ht.temp,
+        "humi": ht.humi
+    });
     return {
         "result": True
     }
