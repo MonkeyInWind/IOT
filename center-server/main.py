@@ -1,6 +1,6 @@
 from fastapi import FastAPI;
 from fastapi.middleware.cors import CORSMiddleware;
-from routes import moduleRouter;
+from routes import moduleRouter, webRouter;
 
 app = FastAPI();
 
@@ -12,7 +12,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(moduleRouter.router, prefix="/api")
+app.include_router(moduleRouter.router, prefix="/api");
+app.include_router(webRouter.router, prefix="/api");
 
 @app.get('/heart_beat')
 async def heartBeat():

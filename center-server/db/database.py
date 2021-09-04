@@ -10,7 +10,7 @@ db = pymysql.connect(
 );
 cursor = db.cursor();
 
-def executeSql(sql):
+def executeInsert(sql):
     try:
        # 执行sql语句
        cursor.execute(sql);
@@ -20,6 +20,15 @@ def executeSql(sql):
        # 如果发生错误则回滚
        db.rollback();
 
+def excuteSelectAll(sql):
+    try:
+        cursor.execute(sql);
+        result = cursor.fetchall();
+        return result;
+    except Exception as err:
+        print(err);
+        print("fetch data error", sql);
+
 def insertHT(data):
     t = int(round(time.time() * 1000));
     uuid = uuid4();
@@ -27,4 +36,12 @@ def insertHT(data):
     temp = data["temp"];
     humi = data["humi"];
     sql = f"INSERT INTO ht(id, macAddress, temp, humi, timestamp) VALUES ('{uuid}', '{macAddress}', '{temp}', '{humi}', {t})";
-    executeSql(sql);
+    executeInsert(sql);
+
+def selectDevices(type):
+    sql = f"select * from devices where type = '{type}'";
+    return excuteSelectAll(sql);
+
+def selectHT(start, end):
+    sql = f"select * from ht where timestamp >= '{start}' and timestamp <= '{end}'";
+    return excuteSelectAll(sql);
