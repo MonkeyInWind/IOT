@@ -4,7 +4,10 @@ const {
 
 module.exports = function (app) {
     app.use(createProxyMiddleware('/api/weather', {
-        "target": "http://t.weather.itboy.net",
-        "changeOrigin": true
+        'target': 'https://wis.qq.com/',
+        'changeOrigin': true,
+        'pathRewrite': {
+            '/api/weather/common': '/weather/common'
+        }
     }))
 }
